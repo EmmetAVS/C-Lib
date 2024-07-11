@@ -10,6 +10,8 @@
 GLFWwindow* getWindow(int width, int height, char title[], int resizeable) {
     dim.height = (float) height;
     dim.width = (float) width;
+    dim.cx = dim.width/2;
+    dim.cy = dim.height/2;
 
     if (!glfwInit()) {
         fprintf(stderr, "Failed to initialize GLFW\n");

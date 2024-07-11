@@ -39,4 +39,4 @@ Color initColor(int r, int g, int b) {
     return c;
 }
 
-#endif // COLORS_H
+#endif

@@ -7,11 +7,10 @@
 typedef struct Dim{
     float width;
     float height;
+    float cx;
+    float cy;
 } Dim;
 
 Dim dim;
-
-float cx;
-float cy;
 
 #endif
