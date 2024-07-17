@@ -1,9 +1,12 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define valueType int
-#define UNSET -1
+#define valueType int*
+#define UNSET NULL
 
 typedef struct linkedListNode {
     struct linkedListNode* prev;
@@ -19,6 +22,7 @@ typedef struct linkedList {
     void (*insert)(struct linkedList*, valueType);
     valueType (*get)(struct linkedList*, int);
     valueType (*pop)(struct linkedList*);
+    valueType (*remove)(struct linkedList*);
 } linkedList;
 
 void linkedListAdd(linkedList* list, valueType value) {
@@ -88,6 +92,15 @@ valueType linkedListPop(linkedList* list) {
     list->size -= 1;
     return toReturn;
 }
+valueType linkedListRemove(linkedList* list) {
+    valueType toReturn = list->tail.value;
+    list->tail = *list->tail.prev;
+    if (list->tail.prev != NULL) {
+        list->tail.prev->next = &list->tail;
+    }
+    list->size -= 1;
+    return toReturn;
+}
 linkedList initLinkedList() {
     linkedList list;
     list.head.prev = NULL;
@@ -101,5 +114,8 @@ linkedList initLinkedList() {
     list.insert = linkedListInsert;
     list.get = linkedListGet;
     list.pop = linkedListPop;
+    list.remove = linkedListRemove;
     return list;
 }
+
+#endif
