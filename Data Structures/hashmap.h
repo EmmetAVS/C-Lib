@@ -1,3 +1,6 @@
+#ifndef HASHMAP_H
+#define HASHMAP_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -56,3 +59,5 @@ Hashmap* initHash(const int Size) {
     hashmap->pop = hashPop;
     hashmap->get = hashGet;
 }
+
+#endif
