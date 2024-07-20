@@ -5,8 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define valueType int*
-#define UNSET NULL
+#ifndef valueType
+#define valueType int
+#endif
+#ifndef UNSET
+#define UNSET -1
+#endif
 
 typedef struct linkedListNode {
     struct linkedListNode* prev;

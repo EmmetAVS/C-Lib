@@ -5,8 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifndef keyType
 #define keyType int
+#endif
+#ifndef valueType
 #define valueType int
+#endif
 
 typedef struct hashMapNode {
     keyType key;

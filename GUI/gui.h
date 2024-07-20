@@ -3,8 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "glfw3.h"
-#include "colors.h"
+#include "basic/glfw3.h"
 #include "dim.h"
 
 GLFWwindow* getWindow(int width, int height, char title[], int resizeable) {
@@ -31,52 +30,6 @@ GLFWwindow* getWindow(int width, int height, char title[], int resizeable) {
 
     glfwMakeContextCurrent(window);
     return window;
-}
-void guiColor(Color c) {
-    glColor3f(c.red, c.green, c.blue);
-}
-void setBackground(Color c) {
-    glColor3f(c.red, c.green, c.blue);
-    glBegin(GL_QUADS);
-    glVertex2f(-1.0, -1.0);
-    glVertex2f(-1.0, 1.0);
-    glVertex2f(1.0, 1.0);
-    glVertex2f(1.0, -1.0);
-    glEnd();
-}
-void createBorder(Color c, float s) {
-
-    float w = s / dim.width;
-    float h = s / dim.height;
-
-    glColor3f(c.red, c.green, c.blue);
-    glBegin(GL_QUADS);
-
-    //Left Top to Left Bottom
-    glVertex2f(-1.0f, -1.0f);
-    glVertex2f(-1.0f, 1.0f);
-    glVertex2f(-1.0f + w, 1.0f);
-    glVertex2f(-1.0f + w, -1.0f);
-
-    //Left Top to Right Top
-    glVertex2f(-1.0f, 1.0f);
-    glVertex2f(-1.0f, 1.0f-h);
-    glVertex2f(1.0f, 1.0f-h);
-    glVertex2f(1.0f, 1.0f);
-
-    //Right Top to Right Bottom
-    glVertex2f(1.0f, -1.0f);
-    glVertex2f(1.0f, 1.0f);
-    glVertex2f(1.0f - w, 1.0f);
-    glVertex2f(1.0f - w, -1.0f);
-
-    //Left Bottom to Right Bottom
-    glVertex2f(-1.0f, -1.0f);
-    glVertex2f(-1.0f, -1.0f+h);
-    glVertex2f(1.0f, -1.0f+h);
-    glVertex2f(1.0f, -1.0f);
-
-    glEnd();
 }
 void closeWindow(GLFWwindow* window) {
     glfwDestroyWindow(window);

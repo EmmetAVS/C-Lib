@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "glfw3.h"
 
 typedef struct Color{
     float red;
@@ -37,6 +38,20 @@ Color initColor(int r, int g, int b) {
     c.green = green;
     c.blue = blue;
     return c;
+}
+
+void guiColor(Color c) {
+    glColor3f(c.red, c.green, c.blue);
+}
+
+void setBackground(Color c) {
+    glColor3f(c.red, c.green, c.blue);
+    glBegin(GL_QUADS);
+    glVertex2f(-1.0, -1.0);
+    glVertex2f(-1.0, 1.0);
+    glVertex2f(1.0, 1.0);
+    glVertex2f(1.0, -1.0);
+    glEnd();
 }
 
 #endif

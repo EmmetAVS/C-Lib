@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "glfw3.h"
+#include "basic/glfw3.h"
 #include "colors.h"
 #include "dim.h"
 #include <math.h>
@@ -69,6 +69,40 @@ void drawCircle(Color c, int x, int y, float r, int s) {
         glVertex2f(-1.0 + (2*((x + x2)/dim.width)), -1.0 + (2*((y + y2)/dim.height)));
         glVertex2f(-1.0 + (2*((x + x3)/dim.width)), -1.0 + (2*((y + y3)/dim.height)));
     }
+    glEnd();
+}
+void createBorder(Color c, float s) {
+
+    float w = s / dim.width;
+    float h = s / dim.height;
+
+    glColor3f(c.red, c.green, c.blue);
+    glBegin(GL_QUADS);
+
+    //Left Top to Left Bottom
+    glVertex2f(-1.0f, -1.0f);
+    glVertex2f(-1.0f, 1.0f);
+    glVertex2f(-1.0f + w, 1.0f);
+    glVertex2f(-1.0f + w, -1.0f);
+
+    //Left Top to Right Top
+    glVertex2f(-1.0f, 1.0f);
+    glVertex2f(-1.0f, 1.0f-h);
+    glVertex2f(1.0f, 1.0f-h);
+    glVertex2f(1.0f, 1.0f);
+
+    //Right Top to Right Bottom
+    glVertex2f(1.0f, -1.0f);
+    glVertex2f(1.0f, 1.0f);
+    glVertex2f(1.0f - w, 1.0f);
+    glVertex2f(1.0f - w, -1.0f);
+
+    //Left Bottom to Right Bottom
+    glVertex2f(-1.0f, -1.0f);
+    glVertex2f(-1.0f, -1.0f+h);
+    glVertex2f(1.0f, -1.0f+h);
+    glVertex2f(1.0f, -1.0f);
+
     glEnd();
 }
 
