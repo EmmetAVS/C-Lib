@@ -1,3 +1,5 @@
 *.exe
 test.c
 download.png
+.vscode/*
+.vscode

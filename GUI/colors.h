@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "glfw3.h"
+#include "basic/glfw3.h"
 
 typedef struct Color{
     float red;
